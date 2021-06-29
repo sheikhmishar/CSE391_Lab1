@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Max, Min, Sum, Average and reverse orde</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="text-center">
+		<div>Input Series of Number <input type="text" value="12,12,22,9,1,20" /></div>
+		<div>Max: <span id="max"></span></div>
+		<div>Min: <span id="min"></span></div>
+		<div>Sum: <span id="sum"></span></div>
+		<div>Average: <span id="avg"></span></div>
+		<div>Reverse Order: <span id="rvs"></span></div>
+	</div>
+	<script>
+		var input = document.getElementsByTagName('input')[0],
+			min = document.getElementById('min'),
+			max = document.getElementById('max'),
+			sum = document.getElementById('sum'),
+			avg = document.getElementById('avg'),
+			rvs = document.getElementById('rvs')
+
+		function onChange() {
+			var inputVals = input.value.split(',')
+			var total = 0
+			var inverse = ''
+			if (inputVals.length) inverse += inputVals[0];
+			for (let i = 0; i < inputVals.length; i++) {
+				inputVals[i] = parseFloat(inputVals[i]);
+				total += inputVals[i];
+				if (i !== 0)
+					inverse = inputVals[i] + ',' + inverse;
+			}
+			min.innerText = Math.min.apply(this, inputVals)
+			max.innerText = Math.max.apply(this, inputVals)
+			sum.innerText = total
+			avg.innerText = total / inputVals.length
+			rvs.innerText = inverse
+		}
+
+		input.onkeypress = onChange
+		input.onkeydown = onChange
+		input.onfocus = onChange
+		input.onblur = onChange
+
+	</script>
+</body>
+
+</html>
