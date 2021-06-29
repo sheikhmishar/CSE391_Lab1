@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hero Converter</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="text-center">
+		<div style="border: 1px solid black; padding: 1rem;">
+			<span>
+				Convert
+				<input id="input" type="text" min="0" value="0" />
+				<select id="unit">
+					<option value="lb to kg">lb to kg</option>
+					<option value="kg to lb">kg to lb</option>
+				</select>
+				<input id="go" type="button" value="Go">
+				<span id="val"></span>
+			</span>
+		</div>
+	</div>
+	<script>
+		var input = document.getElementById('input'),
+			unit = document.getElementById('unit'),
+			go = document.getElementById('go'),
+			val = document.getElementById('val')
+
+		go.onclick = function () {
+
+			var inputVal = input.value
+
+			if (unit.value === 'lb to kg') val.innerText = (parseFloat(inputVal) * 0.4536) + ' kilograms'
+			else val.innerText = (parseFloat(inputVal) * 2.2046) + ' pounds'
+
+		}
+
+	</script>
+</body>
+
+</html>
